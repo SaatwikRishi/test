@@ -15,11 +15,10 @@ jobs:
 
       - name: Trigger workflow in repo-B
         run: |
-          curl -L \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer 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" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/SaatwikRishi/test/actions/workflows/86464855/dispatches \
-          -d '{"ref": "main", "input": {"files": "a.json,b.json"}}'
+          curl --location 'https://api.github.com/repos/SaatwikRishi/test/actions/workflows/86464855/dispatches' \
+          --header 'Accept: application/vnd.github+json' \
+          --header 'Authorization: token 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' \
+          --header 'X-GitHub-Api-Version: 2022-11-28' \
+          --header 'Content-Type: application/json' \
+          --data '{"ref": "main", "inputs": {"array": "a.json,b.json"}}'
 
