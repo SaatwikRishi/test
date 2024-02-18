@@ -1,0 +1,28 @@
+name: Process Comma-Separated Inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'Comma-separated string to convert into an array'
+        required: true
+        type: string
+
+jobs:
+  process_inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Convert string to array
+        id: convert_to_array
+        run: |
+          echo "::set-output name=array::$(echo ${{ github.event.inputs.comma_separated_values }} | tr ',' '\n')"
+
+      - name: Print the array elements
+        run: |
+          echo "Array elements:"
+          for element in ${{ steps.convert_to_array.outputs.array }}; do
+            echo "- $element"
+          done
