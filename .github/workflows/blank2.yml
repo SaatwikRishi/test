@@ -17,7 +17,7 @@ jobs:
         run: |
           curl -X POST \
           -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token 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" \
+          -H "Authorization: token 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" \
           "https://api.github.com/repos/SaatwikRishi/test/actions/workflows/blank.yaml/dispatches" \
           -d '{"ref": "main", "input": {"files": "a.json,b.json"}}'
 
