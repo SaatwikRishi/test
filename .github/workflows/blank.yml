@@ -17,7 +17,7 @@ jobs:
 
       - name: Convert string to array
         id: convert_to_array
-        run: |
+        run: echo "${{github.event.inputs.files}}" |
           echo "::set-output name=array::$(echo ${{ github.event.inputs.files }} | tr ',' '\n')"
 
       - name: Print the array elements
